@@ -1,0 +1,52 @@
+.icon-amenity-default {
+    background-color: red;
+    mask-image: url(img/other.svg);
+}
+
+.icon-amenity-bench {
+    background-color: red;
+    mask-image: url(img/amenity-bench.svg);
+}
+
+.icon-playground-default {
+    background-color: green;
+    mask-image: url(img/other.svg);
+}
+
+.icon-playground-seesaw {
+    background-color: green;
+    mask-image: url(img/playground-seesaw.svg);
+}
+
+.icon-playground-basketrotator {
+    background-color: green;
+    mask-image: url(img/playground-basketrotator.svg);
+}
+
+.icon-playground-slide {
+    background-color: green;
+    mask-image: url(img/playground-slide.svg);
+}
+
+.icon-playground-swing {
+    background-color: green;
+    mask-image: url(img/playground-swing.svg);
+}
+
+.icon-playground-climbframe {
+    background-color: green;
+    mask-image: url(img/playground-climbingframe.svg);
+}
+
+.playgroundIcon {
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    mask-size: 100%;
+}
+
+.leaflet-div-icon {
+    border: 0px;
+    background-color: transparent;
+}
