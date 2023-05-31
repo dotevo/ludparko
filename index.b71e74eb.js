@@ -637,116 +637,7 @@ map.on("moveend", updateHash);
 map.on("zoomend", updateHash);
 setMapFromHash();
 
-},{"./overpass-layer":"qfkcB","leaflet":"iFbO2","./overpass-fetcher":"fI2sk"}],"qfkcB":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "OverpassLayer", ()=>OverpassLayer);
-var _leaflet = require("leaflet");
-var _cash = require("../node_modules/cash-dom/dist/cash");
-var _cashDefault = parcelHelpers.interopDefault(_cash);
-class OverpassLayer extends _leaflet.FeatureGroup {
-    constructor(fetcher){
-        super();
-        this.fetcher = fetcher;
-        this.icons = [];
-        this.ids = new Map;
-        fetcher.setOverpassLayer(this);
-    }
-    onScreenChanged(map) {
-        if (map.getZoom() > 15) this.fetcher.fetchData(map.getBounds());
-    }
-    addData(data) {
-        const ways = {};
-        const nodes = {};
-        data.elements.forEach((element)=>{
-            if (element.type === "way") ways[element.id] = Object.assign(Object.assign({}, ways[element.id]), element);
-            if (element.type === "node") nodes[element.id] = Object.assign(Object.assign({}, nodes[element.id]), element);
-        });
-        Object.keys(ways).forEach((key)=>{
-            const element = ways[key];
-            // Skip if already added to the map
-            if (this.ids["w" + element.id] !== undefined) return;
-            this.ids["w" + element.id] = element;
-            if (element.geometry) {
-                const coordinates = element.geometry.map((geometry)=>({
-                        lat: geometry.lat,
-                        lng: geometry.lon
-                    }));
-                if (element.tags.leisure === "playground") {
-                    const polygon = _leaflet.polygon(coordinates, {
-                        color: "blue",
-                        fillOpacity: 0.4
-                    });
-                    this.addLayer(polygon);
-                } else {
-                    const polygon = _leaflet.polygon(coordinates, {
-                        color: "yellow",
-                        fillOpacity: 0.4
-                    });
-                    this.addLayer(polygon);
-                }
-            }
-        });
-        Object.keys(nodes).forEach((key)=>{
-            const element = nodes[key];
-            // Skip if already added to the map
-            if (this.ids["n" + element.id] !== undefined) return;
-            this.ids["n" + element.id] = element;
-            if (element.lat && element.lon && element.tags) {
-                const marker = _leaflet.marker([
-                    element.lat,
-                    element.lon
-                ], {
-                    icon: new _leaflet.DivIcon({
-                        html: "<div class='playgroundIcon " + this.getClassName(element.tags) + "'></div>"
-                    })
-                });
-                if (element) marker.bindPopup(JSON.stringify(element.tags));
-                this.icons.push(marker);
-                this.addLayer(marker);
-            }
-        });
-    }
-    getClassName(tags) {
-        if (tags["amenity"] !== undefined) return "icon-amenity-" + tags["amenity"] + " icon-amenity-default";
-        if (tags["playground"] !== undefined) return "icon-playground-" + tags["playground"] + " icon-playground-default";
-        return "";
-    }
-    onAdd(map) {
-        // FIXME: clean in onRemove
-        console.log("added");
-        const self = this;
-        map.on("zoomend", ()=>{
-            self.onScreenChanged(map);
-            const zoom = map.getZoom();
-            const size = Math.pow(2, Math.max(zoom - 14, 1));
-            this.icons.forEach((marker)=>{
-                const icon = marker.getIcon();
-                icon.options.iconAnchor = [
-                    size / 2,
-                    size / 2
-                ];
-                icon.options.iconSize = [
-                    size,
-                    size
-                ];
-                marker.setIcon(marker.getIcon());
-            });
-            (0, _cashDefault.default)(".playgroundIcon").css("width", size + "px");
-            (0, _cashDefault.default)(".playgroundIcon").css("height", size + "px");
-        });
-        map.on("dragend", ()=>{
-            self.onScreenChanged(map);
-        });
-        return this;
-    }
-    onRemove(map) {
-        console.log("on remove");
-        return this;
-    }
-}
-
-},{"leaflet":"iFbO2","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","../node_modules/cash-dom/dist/cash":"i47h3"}],"iFbO2":[function(require,module,exports) {
+},{"leaflet":"iFbO2","./overpass-layer":"qfkcB","./overpass-fetcher":"fI2sk"}],"iFbO2":[function(require,module,exports) {
 /* @preserve
  * Leaflet 1.9.4, a JS library for interactive maps. https://leafletjs.com
  * (c) 2010-2023 Vladimir Agafonkin, (c) 2010-2011 CloudMade
@@ -11342,37 +11233,116 @@ class OverpassLayer extends _leaflet.FeatureGroup {
     window.L = exports1;
 });
 
-},{}],"gkKU3":[function(require,module,exports) {
-exports.interopDefault = function(a) {
-    return a && a.__esModule ? a : {
-        default: a
-    };
-};
-exports.defineInteropFlag = function(a) {
-    Object.defineProperty(a, "__esModule", {
-        value: true
-    });
-};
-exports.exportAll = function(source, dest) {
-    Object.keys(source).forEach(function(key) {
-        if (key === "default" || key === "__esModule" || dest.hasOwnProperty(key)) return;
-        Object.defineProperty(dest, key, {
-            enumerable: true,
-            get: function() {
-                return source[key];
+},{}],"qfkcB":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "OverpassLayer", ()=>OverpassLayer);
+var _leaflet = require("leaflet");
+var _cash = require("../node_modules/cash-dom/dist/cash");
+var _cashDefault = parcelHelpers.interopDefault(_cash);
+class OverpassLayer extends _leaflet.FeatureGroup {
+    constructor(fetcher){
+        super();
+        this.fetcher = fetcher;
+        this.icons = [];
+        this.ids = new Map();
+        fetcher.setOverpassLayer(this);
+    }
+    onScreenChanged(map) {
+        if (map.getZoom() > 15) this.fetcher.fetchData(map.getBounds());
+    }
+    addData(data) {
+        const ways = {};
+        const nodes = {};
+        data.elements.forEach((element)=>{
+            if (element.type === "way") ways[element.id] = Object.assign(Object.assign({}, ways[element.id]), element);
+            if (element.type === "node") nodes[element.id] = Object.assign(Object.assign({}, nodes[element.id]), element);
+        });
+        Object.keys(ways).forEach((key)=>{
+            const element = ways[key];
+            // Skip if already added to the map
+            if (this.ids["w" + element.id] !== undefined) return;
+            this.ids["w" + element.id] = element;
+            if (element.geometry) {
+                const coordinates = element.geometry.map((geometry)=>({
+                        lat: geometry.lat,
+                        lng: geometry.lon
+                    }));
+                if (element.tags.leisure === "playground") {
+                    const polygon = _leaflet.polygon(coordinates, {
+                        color: "blue",
+                        fillOpacity: 0.4
+                    });
+                    this.addLayer(polygon);
+                } else {
+                    const polygon = _leaflet.polygon(coordinates, {
+                        color: "yellow",
+                        fillOpacity: 0.4
+                    });
+                    this.addLayer(polygon);
+                }
             }
         });
-    });
-    return dest;
-};
-exports.export = function(dest, destName, get) {
-    Object.defineProperty(dest, destName, {
-        enumerable: true,
-        get: get
-    });
-};
+        Object.keys(nodes).forEach((key)=>{
+            const element = nodes[key];
+            // Skip if already added to the map
+            if (this.ids["n" + element.id] !== undefined) return;
+            this.ids["n" + element.id] = element;
+            if (element.lat && element.lon && element.tags) {
+                const marker = _leaflet.marker([
+                    element.lat,
+                    element.lon
+                ], {
+                    icon: new _leaflet.DivIcon({
+                        html: "<div class='playgroundIcon " + this.getClassName(element.tags) + "'></div>"
+                    })
+                });
+                if (element) marker.bindPopup(JSON.stringify(element.tags));
+                this.icons.push(marker);
+                this.addLayer(marker);
+            }
+        });
+    }
+    getClassName(tags) {
+        if (tags["amenity"] !== undefined) return "icon-amenity-" + tags["amenity"] + " icon-amenity-default";
+        if (tags["playground"] !== undefined) return "icon-playground-" + tags["playground"] + " icon-playground-default";
+        return "";
+    }
+    onAdd(map) {
+        // FIXME: clean in onRemove
+        console.log("added");
+        const self = this;
+        map.on("zoomend", ()=>{
+            self.onScreenChanged(map);
+            const zoom = map.getZoom();
+            const size = Math.pow(2, Math.max(zoom - 14, 1));
+            this.icons.forEach((marker)=>{
+                const icon = marker.getIcon();
+                icon.options.iconAnchor = [
+                    size / 2,
+                    size / 2
+                ];
+                icon.options.iconSize = [
+                    size,
+                    size
+                ];
+                marker.setIcon(marker.getIcon());
+            });
+            (0, _cashDefault.default)(".playgroundIcon").css("width", size + "px");
+            (0, _cashDefault.default)(".playgroundIcon").css("height", size + "px");
+        });
+        map.on("dragend", ()=>{
+            self.onScreenChanged(map);
+        });
+        return this;
+    }
+    onRemove(map) {
+        console.log("on remove");
+        return this;
+    }
+}
 
-},{}],"i47h3":[function(require,module,exports) {
+},{"leaflet":"iFbO2","../node_modules/cash-dom/dist/cash":"i47h3","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"i47h3":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "Cash", ()=>Cash);
@@ -12501,7 +12471,37 @@ fn.serialize = function() {
 // @require methods.ts
 exports.default = cash;
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"fI2sk":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gkKU3":[function(require,module,exports) {
+exports.interopDefault = function(a) {
+    return a && a.__esModule ? a : {
+        default: a
+    };
+};
+exports.defineInteropFlag = function(a) {
+    Object.defineProperty(a, "__esModule", {
+        value: true
+    });
+};
+exports.exportAll = function(source, dest) {
+    Object.keys(source).forEach(function(key) {
+        if (key === "default" || key === "__esModule" || dest.hasOwnProperty(key)) return;
+        Object.defineProperty(dest, key, {
+            enumerable: true,
+            get: function() {
+                return source[key];
+            }
+        });
+    });
+    return dest;
+};
+exports.export = function(dest, destName, get) {
+    Object.defineProperty(dest, destName, {
+        enumerable: true,
+        get: get
+    });
+};
+
+},{}],"fI2sk":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "OverpassFetcher", ()=>OverpassFetcher);
@@ -12608,7 +12608,7 @@ class OverpassFetcher {
     }
 }
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","leaflet":"iFbO2","./download-queue":"6OL6z"}],"6OL6z":[function(require,module,exports) {
+},{"leaflet":"iFbO2","./download-queue":"6OL6z","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"6OL6z":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "DownloadQueue", ()=>DownloadQueue);
