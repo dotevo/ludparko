@@ -22,7 +22,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "TODFO"
+    "url": "https://github.com/dotevo/ludparko.git"
   },
   "devDependencies": {
     "@parcel/transformer-typescript-tsc": "^2.9.1",
