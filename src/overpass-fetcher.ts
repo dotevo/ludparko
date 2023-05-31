@@ -82,7 +82,7 @@ export class OverpassFetcher {
 
     // Download
     this.downloadQueue.enqueue({
-      input: "http://overpass-api.de/api/interpreter?data=",
+      input: "https://overpass-api.de/api/interpreter?data=",
       init: {
         method: "POST",
         headers: {
