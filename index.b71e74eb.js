@@ -12573,7 +12573,7 @@ class OverpassFetcher {
         const query = "[out:json][timeout:25];" + this.query.replace(/%BBOX%/g, toOverpassString(bbox)).replace(/(\r\n|\n|\r|\\n)/gm, "");
         // Download
         this.downloadQueue.enqueue({
-            input: "http://overpass-api.de/api/interpreter?data=",
+            input: "https://overpass-api.de/api/interpreter?data=",
             init: {
                 method: "POST",
                 headers: {
