@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg width="210mm" height="297mm" viewBox="0 0 210 297" version="1.1" id="svg5" inkscape:version="1.2.2 (b0a8486541, 2022-12-01)" sodipodi:docname="playground-seesaw.svg" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview id="namedview7" pagecolor="#ffffff" bordercolor="#666666" borderopacity="1.0" inkscape:showpageshadow="2" inkscape:pageopacity="0.0" inkscape:pagecheckerboard="0" inkscape:deskcolor="#d1d1d1" inkscape:document-units="mm" showgrid="false" inkscape:zoom="0.914906" inkscape:cx="345.39067" inkscape:cy="243.19438" inkscape:window-width="1488" inkscape:window-height="1230" inkscape:window-x="120" inkscape:window-y="27" inkscape:window-maximized="0" inkscape:current-layer="layer1"></sodipodi:namedview>
+  <defs id="defs2"></defs>
+  <g inkscape:label="Warstwa 1" inkscape:groupmode="layer" id="layer1">
+    <path sodipodi:type="star" style="fill: #000; stroke: #000; stroke-width: .264583px" id="path458" inkscape:flatsided="false" sodipodi:sides="3" sodipodi:cx="75.750893" sodipodi:cy="40.263378" sodipodi:r1="40.278263" sodipodi:r2="20.139133" sodipodi:arg1="0.52595526" sodipodi:arg2="1.5731528" inkscape:rounded="0" inkscape:randomized="0" d="M 110.58534,60.484653 75.703435,60.402456 40.821533,60.320255 58.333669,30.15274 75.845808,-0.01477312 93.215574,30.234939 Z" inkscape:transform-center-x="0.023380085" inkscape:transform-center-y="-4.9403752" transform="matrix(0.49263649,0,0,0.49263649,71.698071,70.130024)"></path>
+    <rect style="fill: #000; stroke: #000; stroke-width: .264583px" id="rect460" width="142.11487" height="11.480371" x="46.913216" y="49.977444" ry="2.3248506" transform="rotate(9.2682948)"></rect>
+    <rect style="fill: #000; stroke: #000; stroke-width: .264583px" id="rect462" width="3.4432607" height="22.97257" x="67.481491" y="29.308235" ry="1.7216303" transform="rotate(8.0315713)"></rect>
+    <rect style="fill: #000; stroke: #000; stroke-width: .264583px" id="rect462-9" width="3.4432607" height="22.97257" x="164.10352" y="32.294159" ry="1.7216303" transform="rotate(8.0315713)"></rect>
+  </g>
+</svg>

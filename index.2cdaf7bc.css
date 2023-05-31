@@ -1,0 +1,63 @@
+.icon-amenity-default {
+  background-color: red;
+  -webkit-mask-image: url("other.3c1a134b.svg");
+  mask-image: url("other.3c1a134b.svg");
+}
+
+.icon-amenity-bench {
+  background-color: red;
+  -webkit-mask-image: url("amenity-bench.14da0d1d.svg");
+  mask-image: url("amenity-bench.14da0d1d.svg");
+}
+
+.icon-playground-default {
+  background-color: green;
+  -webkit-mask-image: url("other.3c1a134b.svg");
+  mask-image: url("other.3c1a134b.svg");
+}
+
+.icon-playground-seesaw {
+  background-color: green;
+  -webkit-mask-image: url("playground-seesaw.ab1ca577.svg");
+  mask-image: url("playground-seesaw.ab1ca577.svg");
+}
+
+.icon-playground-basketrotator {
+  background-color: green;
+  -webkit-mask-image: url("playground-basketrotator.35f24666.svg");
+  mask-image: url("playground-basketrotator.35f24666.svg");
+}
+
+.icon-playground-slide {
+  background-color: green;
+  -webkit-mask-image: url("playground-slide.9e389973.svg");
+  mask-image: url("playground-slide.9e389973.svg");
+}
+
+.icon-playground-swing {
+  background-color: green;
+  -webkit-mask-image: url("playground-swing.e3deffd1.svg");
+  mask-image: url("playground-swing.e3deffd1.svg");
+}
+
+.icon-playground-climbframe {
+  background-color: green;
+  -webkit-mask-image: url("playground-climbingframe.f654574c.svg");
+  mask-image: url("playground-climbingframe.f654574c.svg");
+}
+
+.playgroundIcon {
+  width: 20px;
+  height: 20px;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  -webkit-mask-size: 100%;
+  mask-size: 100%;
+}
+
+.leaflet-div-icon {
+  background-color: #0000;
+  border: 0;
+}
+
+/*# sourceMappingURL=index.2cdaf7bc.css.map */
